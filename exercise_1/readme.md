@@ -12,7 +12,9 @@ presses
 #### Hints
  * Typing of variables will be a big part of this. Look into the parseInt() and
    parseFloat() functions
+
    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
+   
    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat
 
 
