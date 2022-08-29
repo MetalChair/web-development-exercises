@@ -39,4 +39,4 @@ function displayValue(valueToDisplay) {
     display.value = valueToDisplay;
 }
 
-displayValue("8008")
+displayValue("455")
