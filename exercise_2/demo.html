@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+        .block-demo-container{
+            display: block;
+        }        
+        .style-container{
+            border: 2px solid;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .style-container > div:nth-child(1){
+            border: 1px solid red;
+            color: red;
+        }
+        .style-container > div:nth-child(2){
+            border: 1px solid #f3722c;
+            color: #f3722c;
+        }
+        .style-container > div:nth-child(3){
+            border: 1px solid green;
+            color: green;
+        }
+        .style-container > div:nth-child(4){
+            border: 1px solid blue;
+            color: blue;
+        }
+        .style-container > div:nth-child(5){
+            border: 1px solid darkviolet;
+            color: darkviolet;
+        }
+        .style-container > div:nth-child(6){
+            border: 1px solid brown;
+            color: brown;
+        }
+        .margin-demo{
+            margin: 5px;
+            background-color: white;
+        }
+        .padding-demo{
+            background-color: white;
+            padding: 5px;
+        }
+        .margin-demo-container{
+            background-color:lightgray;
+        }
+        .margin-one-side{
+            margin-left: 10px;
+            background-color: white;;
+        }
+        .padding-one-side{
+            padding-top: 25px;
+        }
+        .inline{
+            display: inline;
+            color: black;
+            border: 1px solid black;
+        }
+        .block{
+            display: block;
+            color: black;
+            border: 1px solid black;
+        }
+        .w-250{
+            width: 250px;
+        }
+        .inline-block{
+            display: inline-block;
+            color: black;
+            border: 1px solid black;
+        }
+        .w-1\/2{
+            width: 50%;
+        }
+        .col-container{
+            white-space: nowrap;
+        }
+        .flex{
+            display: flex;
+        }
+        .col{
+            flex-direction: column;
+        }
+        .black-border{
+            border: 1px solid black;
+        }
+        .flex-1-demo{
+            height: 500px;
+            width: 100%;
+            background-color: grey;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .flex-2-demo{
+            width:100%;
+            background-color: grey;
+            height: 500px;
+            justify-content: space-evenly;
+        }
+        .flex-3-demo{
+            width: 100%;
+            height: 200px;
+            background-color: grey;
+            justify-content: flex-start;
+            align-items: flex-end;
+            flex-direction: column;
+        }
+    </style>
+  </head>
+  <body>
+    <b>Section 1: (Block Layouts)</b>
+    <div class = "style-container">
+        <div>Elements that are rendered in a display:block context (LIKE THESE ONES) are displayed
+        one after the other vertically.
+        </div>
+        <div>Even if the elements don't take up the entire horizontal space they
+        are given</div>
+        <div>Notice that, by default, elements have no margins meaning they tend
+        to look "cramped" together</div>
+        <div>
+        Each different colored element in this box is a different div element
+        with no layout changes, only a border and a color have been added
+        </div>
+        <div>Feel free to right click the elements and select "inspect element"
+        to look at how the browser lays these out</div>
+        <div>Try resizing the page and look at how the layout flows when these
+        elements run out of room</div>
+    </div>
+    <b>Section 2: (Margin and Padding)</b>
+    <div class = "style-container margin-demo-container">
+        <div class = "margin-demo">This element is the same as the red element
+        in Section 1 but has a margin of 5px. Notice how the margin "pushes" the
+        red box away from the black border. The grey background surrounding the
+        red box is created by the use of margin. If you inspect this element,
+        you can see the layout engine providing the margin. This is done like this:
+        <br>
+            <code>
+            .margin-demo{
+                margin: 5px;
+            }
+            </code>
+        </div>
+        <div class = "padding-demo">
+            This element is the same as the orange element in section 1 except
+            it has a padding of 5px. This element has <b>NO</b> margin, unlike
+            the element above, so the borders of the orange box are back to
+            "hugging" the containers. This is done like this:
+            <br>
+            <code>
+            .padding-demo{
+                padding: 5px;
+            }
+            </code>
+        </div>
+        <div class = "padding-demo margin-demo">
+            This element has both a margin and padding of 5px. Notice how much
+            better this looks than the elements that are slammed up against the
+            borders. 
+            <br>
+            The TL;DR for margin in padding on block level elements is this:
+            <br>
+            Margin "pushes" this element away from others by the specified
+            amount
+            <br>
+            Padding "pushes" the content within an element away from the edges
+            of the element
+        </div>
+        <div class = "padding-one-side margin-one-side">
+            It is also worth noting that margins and padding can be applied
+            individually to each side of the element. This element has 10px of
+            margin on the left side and 50px of padding on the top. This is done
+            like this:
+            <br>
+            <code>
+                .padding-demo{
+                    padding-top: 50px;
+                    margin-left: 10px;
+                }
+            </code>
+            <br>
+            The same technique can be used for the bottom and right of elements
+            as well. Note that the grey space above this element is created by
+            the margin of the box ABOVE it and not this element itself
+        </div>
+    </div>
+    <b>Section 3 (Inline elements)</b>
+    <br>
+    By default, most elements default to being laid out as a block element. We
+    can change this by setting the display to inline like so:
+    <br>
+    <code>
+        .inline-elem { display: inline;}
+    </code>
+    <div class = "style-container">
+        <div class = "margin-demo padding-demo">
+            By default, certain HTML elements are rendered as inline. This means
+            they won't cause a line break after they are closed. For example:
+            <br>
+            <br>
+            Text wrapped in a <code>&lt;b&gt;</code> tag <b>makes text bold.</b> 
+            <br>
+            By default, this tag is displayed as inline so we can
+            create bold text in a bigger block of text without having a
+            linebreak.
+            <br>
+            If a bold tag was displayed as a block-level element, we would see
+            this:
+            <br>
+            <br>
+            text wrapped in a <code>&lt;b&gt;</code> tag <b style = "display: block;">makes text
+            bold.</b>
+            <br>
+            <br>
+            A full list of inline-by-default elements can be found <a
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements">here</a> 
+        </div>
+        <div class = "margin-demo padding-demo">
+            Although some elements are laid out inline by default, we can
+            manually set elements to display as inline as demonstrated above.
+            For example, div tags are normally laid out as blocks, but we can
+            assign them an "inline" display property and make them display side
+            by side:
+            <br>
+            <br>
+            <div class = "inline">
+                I am on the left
+            </div>
+            <div class = "inline">
+                I am on the right
+            </div>
+            <br>
+            <br>
+            We can also add margin and padding to elements marked "inline", but
+            the padding <b>Will not</b> be considered as part of the elements
+            height. More on this later. Look what happens when we define padding
+            on an inline elment and have multiple lines of text: (You might have
+            to shrink your browser window width to see this. The border of the
+            element will overlap the text)
+            <br>
+            <br>
+            <div class = "inline">
+                I am on the left
+            </div>
+            <div class = "inline padding-one-side">
+                I am on the right
+            </div>
+            <br>
+            <br>
+            Inline elements also don't respect height or width properties. These
+            two elements have been given a 250px width and do not grow to match
+            that expected width
+            <br>
+            <br>
+            <div class = "inline w-250">
+                I am on the left
+            </div>
+            <div class = "inline w-250">
+                I am on the right
+            </div>
+            <br>
+            <br>
+            Compared to this element which is marked as a block, which forces it
+            to 250px
+            <br>
+            <br>
+            <div class = "block w-250">
+                I am first and 250px wide
+            </div>
+            <div class = "block w-250">
+                I am second and 250px wide
+            </div>
+        </div>
+        <div class = "margin-demo padding-demo">
+            CSS also provides an inline-block display property. This provides us
+            the same properties as an inline element with the advantages of a
+            block element. It will render elements inline,but with respsect for
+            padding size, margin size, width and height.
+            <br>
+            <br>
+            Notice now how, when resizing the page, the borders of the elements
+            below don't clip onto the text above. This is because we marked them
+            as inline blocks
+            <br>
+            <br>
+            <div class = "inline-block">
+                I am on the left
+            </div>
+            <div class = "inline-block padding-one-side">
+                I am on the right
+            </div>
+            <br>
+            <br>
+            Additionally, inline block allows us to define widths on the
+            elements we create. This is very helpful for creating divs that
+            split the page. For example:
+            <div class = "col-container">
+                <div class="inline-block w-1/2">
+                    I have a 50% width
+                </div><div class="inline-block w-1/2">
+                    I have a 50% width
+                </div>
+            </div>
+            <br>
+            This method has some drawbacks. Specifically, inline-block elements
+            account for whitespace so we need to use a special property to get
+            side by side 50% width divs. In the above example, we set a special
+            property on the div containing the elements that tells the layout
+            engine to not wrap elements to the next line if the text causing the
+            overflow is whitespace.
+            
+            This issue has been remedied by a newer
+            layout feature called flexbox.
+        </div>
+    </div>
+    <b>Section 3 (flexbox)</b>
+    <br>
+    Inline-block and inline still had some shortcomings when it came to laying
+    out HTML elements. A new method of laying out pages was created to try to
+    solve this called flexbox. Flexbox allows for flexible and easily created
+    column and row base layouts. We mark an element as a flex layout element by
+    giving it the property <code>display:flex</code>
+    <div class = "style-container">
+        <div class = "margin-demo padding-demo">
+            <div class = "flex">
+                This element is marked as having a flex layout as well as a
+                margin and padding property, flex
+                elements are laid out similarly to inline elements
+                <div class = "block">
+                    I am side by side
+                </div>
+                <div class = "block">
+                    I am side by side
+                </div>
+            </div>
+        </div>
+        <div class = "margin-demo padding-demo">
+            But Flexbox also provides us with properties that allows us to
+            control how the child elements are laid out. This is changed with
+            the <code>flex-direction</code> property that accepts a column or
+            row property:
+            <div class = "flex">
+                <div class = "flex col black-border">
+                    <div class = "black-border">
+                        I am a block element in a container with a
+                        "flex-direction: column" property
+                    </div>
+                    <div class = "black-border">Notice how my elements are laid out</div>
+                    <div class = "black-border">in a column</div>
+                </div>
+                <div class = "flex black-border">
+                    <div class = "black-border">
+                        I am a block element in a container with a
+                        "flex-direction: row" property
+                    </div>
+                    <div class = "black-border">
+                        My contents are laid out in a row
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "margin-demo padding-demo">
+           Flex box also provides us with the ability to set how the content
+           inside of a container is justifed. This is done using the
+           <code>justify-content</code> and <code>align-items</code> properties.
+           <br>
+           <br>
+           Justify content determines how items are laid out along the main axis
+           of the container. If the container is marked as <code>flex-direction:
+           row</code>, then justify-content will determine the position of child
+           elements from left to right. If the container is marked as
+           <code>flex-direction: column</code>, then justify-content will
+           determine the position of the child from top to bottom.
+           <br>
+           <br>
+           align-items is the same but for the cross-axis. If the container is
+           marked as <code>flex-direction: row</code>, then align-items will
+           determine the position of child elements from top to bottom. If the
+           container is marked as<code>flex-direction: column</code>, then
+           align-items determines the position of the child from left to right.
+        </div>
+        <div class = "margin-demo padding-demo">
+            Here are some flexbox examples:
+            <div class = "flex flex-1-demo black-border">
+                <div>
+                    I am text inside a container with the following properties:
+                </div>
+                <code>
+                    height: 500px;
+                </code>
+                <code>
+                    width: 100%;
+                </code>
+                <code>
+                    background-color: grey;
+                </code>
+                <code>
+                    justify-content: center;
+                </code>
+                <code>
+                    align-items: center;
+                </code>
+                <code>
+                    flex-direction: column;
+                </code>
+                <div>
+                    This makes it really easy to center both horizontally and
+                    vertically in an element!
+                </div>
+            </div>
+         <div class = "flex flex-2-demo black-border">
+            <div class="black-border">
+                I am an element in a flex row container.
+            </div>
+            <div class = "black-border">
+                I have the property: <code>justify-content:space-evenly</code>
+            </div>
+            <div class = "black-border">
+                This attempts to create an even amount of spacing between
+                elements in this container
+            </div>
+         </div>
+         <div class = "flex flex-3-demo black-border">
+            <div>I am text in a flex column element that has the properties</div>
+            <div>
+                <code>
+                    justify-content: flex-start;
+                    align-items: flex-end;
+                </code>
+            </div>
+            <div>
+                Since this container is marked as flex-direction: column.
+                justify-content determines the vertical positioning of the
+                element. 
+            </div>
+            <div>
+                In this case, we're aligning vertically to the start of
+                the container with flex-start
+            </div>
+         </div>
+        </div>
+        <div class="margin-demo padding-demo">
+            I highly recommend referencing a cheat sheet <a href =
+            "https://flexboxsheet.com/">Like this when working with flexbox</a>
+        </div>
+    </div>
+  </body>
+</html>
